@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--Bootsrap 4 CDN-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link href="{% static 'images/spark.png' %}" rel="icon">
+
+<!--Fontawesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+     
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/coming-sssoon.css' %}" rel="stylesheet" />    
+    
+    <!--     Fonts     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/coming-sssoon.css' %}" rel="stylesheet" />    
+    
+    <!--     Fonts     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+  
+</head>
+<body>
+    <nav class="navbar navbar-transparent navbar-fixed-top" role="navigation">  
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+      
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <h3 class="logo"><a href="{% url 'home' %}" style="text-decoration: none;color: seashell;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Spark Foundation</a></h3>
+          
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <a href="{% url 'home' %}" class="active"> 
+                          <i class="fa fa-home"></i>
+                          Home
+                      </a>
+                  </li>
+                  
+            
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+      </nav>
+    <div class="main" style="background-image: url({% static 'images/test3.jpg' %});">
+<br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div class="container">    
+    <div class="d-flex justify-content-center h-100">
+        <div class="card" style="background-color:transparent;border-radius: 25px;padding: 15px;">
+           
+            <!-- <div class="card-header">
+				
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div> 
+
+               
+			</div> -->
+             <div class="card-body" style="margin-top: 15px;">  
+                <div class="form">
+                    <h3 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-style:italic;color:rgb(255, 255, 255);width: fit-content;">"Think for good and donate for needy."</h3> 
+                    <br>
+            
+                <div id="paypal-button-container"></div>
+
+                <!-- Include the PayPal JavaScript SDK -->
+                <script src="https://www.paypal.com/sdk/js?client-id=AdekNn2nHXqdWkaDMxxky0Rg-gwYr7-9KaSZjiYQm905pYTRwSXVUJC8ppr_tvEqiT7uqQ4AFEKw6SEo&currency=USD"></script>
+                
+                <script>        
+                // Render the PayPal button into #paypal-button-container
+                paypal.Buttons({
+                
+                // Set up the transaction
+                createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '88.44'
+                        }
+                    }]
+                });
+                },
+                
+                // Finalize the transaction
+                onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+                }
+                
+                
+                }).render('#paypal-button-container');
+                </script>
+                </div>
+            <!-- </div> -->
+            <!-- <div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="/register">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="/password_reset">Forgot your password?</a>
+				<!-- </div>-- -->
+			 </div> 
+        
+        </div>
+     </div>
+</div>
+    </div>
+</body>
+</html>
